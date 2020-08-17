@@ -46,6 +46,10 @@ Dafis boilerplate is already has Docker compose file to run it easily on any ser
 docker-compose up --build
 ```
 
+### Todos
+
+- Make more documentation
+
 ## License
 
 MIT
