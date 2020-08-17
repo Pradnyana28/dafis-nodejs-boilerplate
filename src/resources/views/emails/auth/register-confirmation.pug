@@ -1,0 +1,13 @@
+extends ../layout
+
+append content
+    p.mb-2 Hi <b class="color-primary">#{data.user.fullName}</b>,
+    p.mb-2 
+        | !{__('email.registration_confirmation.paragraph_1')}.
+        | !{__('email.registration_confirmation.paragraph_2')}.
+    p.mb-2
+        a.color-primary(href=data.confirmation_link)
+            | !{data.confirmation_link}
+    p.mb2
+        | Salam Hormat.<br />
+        | I Kadek Pradnyana.

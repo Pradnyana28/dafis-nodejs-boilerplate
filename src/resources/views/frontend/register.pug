@@ -1,0 +1,52 @@
+extends ../layouts/app
+
+include ../mixins/_button
+include ../mixins/_seoMeta
+
+append head
+  +seo_meta(pageMeta)
+
+append appContent
+  div.w-full.h-screen.relative
+    .grid.grid-cols-1.gap-20.h-full(class="md:grid-cols-3")
+      .hidden.bg-primary.register-motivation.text-center(class="md:col-span-2 md:block")
+        h1.text-primary.text-sm.font-bold.mt-120(class="md:text-md lg:text-xl") !{__('auth.register_title')}.
+        p.text-base.text-primary.mt-30(class="md:text-sm") !{__('auth.register_description')}
+
+      .p-20(class="md:col-span-1")
+        .form.flex.flex-row.h-full.items-center.justify-between
+          .w-full.text-center
+            a(href=route.home)
+              h2.text-primary.text-md.font-bold #{app.title}
+
+            form.w-full.max-w-300.mx-auto.mt-50(ja-request=route.register, ja-ajax, ja-type="post", autocomplete="off")
+              input(type="hidden", name="_csrf", value=csrfToken)
+
+              .block.text-center
+                input.border-b.border-grey-dark.bg-transparent.text-primary.py-20.w-full.outline-none(type="text", placeholder=__('auth.firstName'), name="firstName")
+                span.hidden.text-left.validation.firstName-validation.text-10
+              .block.text-center
+                input.border-b.border-grey-dark.bg-transparent.text-primary.py-20.w-full.outline-none(type="text", placeholder=__('auth.lastName'), name="lastName")
+                span.hidden.text-left.validation.lastName-validation.text-10
+              .block.text-center
+                input.border-b.border-grey-dark.bg-transparent.text-primary.py-20.w-full.outline-none(type="text", placeholder=__('auth.email'), name="email")
+                span.hidden.text-left.validation.email-validation.text-10
+              .block.text-center.relative
+                input.border-b.border-grey-dark.bg-transparent.text-primary.py-20.w-full.outline-none(type="password", placeholder=__('auth.password'), name="password")
+                i#show-password.text-grey-dark.absolute.right-0.top-0.mt-25(data-feather="eye-off", data-target="input[name=password]")
+                i#hide-password.hidden.text-primary.absolute.right-0.top-0.mt-25(data-feather="eye", data-target="input[name=password]")
+                span.hidden.text-left.validation.password-validation.text-10
+
+              .mt-50
+                button.inline-block.text-base.px-30.py-15.leading-none.rounded-6.text-white.text-center.bg-primary-soft.mt-4(ja-send, class='hover:bg-primary-soft lg:mt-0')
+                  .flex.items-center
+                    i(data-feather="log-in",width="18",height="18")
+                    | &nbsp; !{__('auth.register')}
+              
+              .mt-30
+                p.text-grey-dark.text-10.text-center #{__('auth.already_have_account')}? &nbsp;
+                  a.text-primary(href=route.signin) #{__('auth.signin')}
+
+              .mt-50
+                p.text-10.text-grey-soft
+                  | !{__('auth.term_condition', { termLink: route.terms, className: 'text-primary' })}

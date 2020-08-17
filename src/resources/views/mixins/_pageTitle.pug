@@ -1,0 +1,12 @@
+mixin pageTitle(pageMeta)
+    if pageMeta
+        .hero.bg-primary.w-full
+            .relative.container.mx-auto.items-center.justify-between.pl-20.pr-20.mt-90.pt-100.pb-100(class="md:flex md:flex-row md:pl-50 md:pr-50")
+                img.absolute.left-0.top-0.mt-50.ml-120(src="/resources/images/eclipse-small.png")
+                img.absolute.right-0.top-0.mt-50.mr-120(src="/resources/images/eclipse-small.png")
+                img.absolute.right-0.top-0.mt-50.mr-120(src="/resources/images/page-title-illustration.png")
+                .hero-text.relative.z-10
+                    h2.text-lg.text-white.font-bold
+                        | !{pageMeta.title}
+                    p.text-white.mb-30.text-base
+                        | !{pageMeta.description}

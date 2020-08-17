@@ -1,0 +1,173 @@
+{
+  "auth": {
+    "already_have_account": "Sudah punya akun",
+    "create_new_account": "Buat akun baru",
+    "create_new_password": "Buat Password Baru",
+    "create_new_password_subtitle": "Silahkan masukkan password baru untuk akunmu",
+    "dont_have_account": "Belum punya akun",
+    "email": "Alamat Email",
+    "firstName": "Nama Depan",
+    "forgot_password": "Forgot Password",
+    "lastName": "Nama Belakang",
+    "logged_in": "Hi, {{ initial }}",
+    "name": "Nama",
+    "password": "Password",
+    "register": "Register",
+    "register_title": "Belajar Sekarang.<br />Tingkatkan Peluang Anda",
+    "register_description": "Mari raih kesempatan yang lebih baik <br />untuk masa depan Anda",
+    "remember": "Remember Me",
+    "reset_now": "Reset Sekarang",
+    "reset_password": "Reset Password",
+    "reset_password_description": "Masukkan email yang Anda gunakan saat<br />pertama kali registrasi",
+    "subtitle": "Gunakan username/email dan password saat anda<br />mendaftar pada sistem kami",
+    "term_condition": "Dengan menekan tombol Masuk, maka Anda telah setuju<br />dengan <a href='{{ termLink }}' class='{{ className }}' target='_blank'>Syarat dan Ketentuan</a> pada situs kami.",
+    "signin": "Masuk",
+    "update_password": "Perbarui Password",
+    "username_email": "Username / Email Address"
+  },
+
+  "articles": {
+    "latest": "Artikel <span class='text-primary font-bold'>Terbaru</span>"
+  },
+
+  "blogs": {
+    "title": "Artikel",
+    "description": "Baca artikel terbaru dari kami dan dapatkan tips & trik dari suhu."
+  },
+
+  "categories": {
+    "title": "Mata Kuliah &nbsp;<span class='text-primary font-bold'>{{ category }}</span>",
+    "programming": {
+      "title": "Mata Kuliah <span class='text-primary font-bold'>Pemrograman</span>"
+    }
+  },
+
+  "copyright": "Copyright Garasi Course 2020. All right reserved.",
+  "course": {
+    "empty": "Untuk saat ini belum ada mata kuliah yang bisa ditampilkan",
+    "start_now": "Mulai sekarang"
+  },
+  "courses": "Courses",
+
+  "cta": {
+    "enroll_now": "Daftar Sekarang",
+    "description": "Daftar sekarang dan belajar dari mana saja kalian inginkan kapanpun, selamanya.<br />Gabung dengan newsletter kami untuk mendapatkan update terbaru artikel yang munkin Anda senangi."
+  },
+
+  "email": {
+    "registration_complete": {
+      "paragraph_1": "Selamat datang di <b class='color-primary'>{{ title }}</b> dan selamat bergabung",
+      "paragraph_2": "Kami senantiasa akan membantu perjalanan karir Anda dengan memberikan bimbingan mengenai mata kuliah yang Anda senangi di <b class='color-primary'>{{ title }}</b>",
+      "paragraph_3": "Jangan lupa untuk mengikuti kami di social media untuk mendapatkan informasi seputar teknologi dan lain - lain"
+    },
+    "registration_confirmation": {
+      "paragraph_1": "Terima kasih telah bersedia untuk bergabung bersama kami",
+      "paragraph_2": "Gunakan tautan dibawah ini untuk melakukan konfirmasi alamat surel Anda"
+    },
+    "reset_password": {
+      "paragraph_1": "Kami telah menerima permintaan reset password Anda",
+      "paragraph_2": "Gunakan tautan dibawah ini untuk melakukan reset password"
+    }
+  },
+
+  "flash": {
+    "verification_success": {
+      "title": "Verifikasi Berhasil",
+      "image": "",
+      "description": "Email Anda berhasil diverifikasi. Terima kasih telah menggunakan situs kami."
+    },
+    "verification_failed": {
+      "title": "Verifikasi Gagal",
+      "image": "",
+      "description": "Mohon maaf, Email Anda gagal diverifikasi. Pastikan tautan yang Anda gunakan sudah benar dan belum digunakan sebelumnya."
+    },
+    "register_success": {
+      "title": "Email Verifikasi Dikirim",
+      "image": "/resources/images/verification-email.png",
+      "description": "Kami telah mengirimkan email verifikasi ke<br /><b>{{ emailAddress }}</b>"
+    },
+    "forgot_password_success": {
+      "title": "Email Reset Password Dikirim",
+      "image": "/resources/images/verification-email.png",
+      "description": "Kami telah mengirimkan email reset password ke<br /><b>{{ emailAddress }}</b>"
+    },
+    "reset_password_success": {
+      "title": "Password Baru Berhasil Disimpan",
+      "image": "",
+      "description": "Password pada akun Anda berhasil diperbarui. Silahkan login kembali dengan menggunakan password yang baru saja Anda ganti.<br /><a href='/auth/signin' class='text-secondary font-bold'>Masuk Sekarang</a>"
+    }
+  },
+
+  "footer": {
+    "about_us": "Tentang Kami",
+    "contact_us": "Hubungi Kami",
+    "copyright": "Copyright 2020 Garasi Course. All rights reserved",
+    "faqs": "FAQs",
+    "features": "Fitur",
+    "help": "Bantuan",
+    "how_it_work": "Cara Kerja",
+    "made_with_love": "Made with <3 by Prathnan Design",
+    "others": "Lainnya",
+    "social_media": "Social Media"
+  },
+
+  "home": "Beranda",
+
+  "hero": {
+    "hero_title": "Welcome to Dafis<br /> Node.js Boilerplate",
+    "hero_description": "Bersama <b class='text-secondary'>{{ companyName }}</b> kamu akan mendapatkan<br />pengalaman baru dilatih oleh tenaga<br />professional dibidangnya.",
+    "subtitle": "Berlangganan dengan kami untuk mendapatkan informasi terbaru<br />mengenai mata kuliah yang Anda senangi. <a href='{{ subscribeLink }}' class='text-secondary'>Berlangganan Sekarang</a>!",
+    "button_label": "Lihat Mata Kuliah"
+  },
+
+  "input": {
+    "firstName": "Nama Depan",
+    "lastName": "Nama Belakang",
+    "email": "Alamat Email",
+    "password": "Password",
+    "username": "Username / Email Address"
+  },
+
+  "internal_server_error": "Terjadi Masalah pada Sistem",
+  "internal_server_error_information": "Mohon maaf. Telah terjadi masalah pada sistem kami, mohon untuk mengunjungi beberapa saat lagi. Terima kasih.",
+  "invalid_request": "Invalid Request",
+  "invalid_request_information": "Sepertinya Anda telah melakukan kesalahan, mohon untuk mencoba kembali.",
+
+  "navigation": {
+    "about": "Tentang Kami",
+    "lecture": "Mata Kuliah",
+    "blog": "Artikel",
+    "login_or_register": "Masuk / Daftar"
+  },
+
+  "or": "Atau",
+  "page_not_found": "Halaman Tidak Ditemukan",
+  "page_not_found_information": "Tautan yang Anda ikuti sepertinya sudah rusak atau telah pindah atau tidak pernah ada.",
+  "read_more": "Baca Selengkapnya",
+
+  "services": {
+    "professional_instructor": {
+      "title": "Pengajar Professional",
+      "description": "Dilatih oleh tenaga professional yang berpengalaman"
+    },
+    "lifetime_access": {
+      "title": "Akses Selamanya",
+      "description": "Pelajari sesuai dengan jadwdalmu selamanya"
+    },
+    "for_everyone": {
+      "title": "Untuk Siapa Saja",
+      "description": "Cocok bagi pemula, pelajar maupun yang sudah bekerja"
+    }
+  },
+
+  "validation": {
+    "credentials_invalid": "Username atau password yang anda masukkan tidak sesuai",
+    "email_already_registered": "Email Anda sudah terdaftar",
+    "email_not_registered": "Email Anda belum terdaftar pada sistem kami",
+    "password_minimum": "Password harus lebih dari 8 karakter",
+    "required": "Kolom {{ field }} harus diisi",
+    "reset_password_invalid": "Proses reset password gagal"
+  },
+
+  "view_all": "Lihat Semua"
+}

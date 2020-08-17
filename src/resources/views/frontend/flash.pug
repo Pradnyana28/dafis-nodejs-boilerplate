@@ -1,0 +1,22 @@
+extends ../layouts/app
+
+include ../mixins/_seoMeta
+
+append head
+  +seo_meta(pageMeta)
+
+append appContent
+  img.fixed.top-0.left-0.-mt-200(src="/resources/images/circles-illustration.png")
+  img.fixed.bottom-0.right-0.-mb-120(src="/resources/images/circles-illustration-small.png")
+  div.w-full.bg-primary
+    .container.mx-auto.py-50.h-screen.relative
+      a(href=route.home, title="Home page")
+        h2.text-white.text-md.font-bold #{app.title}
+
+      .form.flex.flex-row.h-full.items-center.justify-between
+        .w-full.text-center
+          if flash
+            p.text-white.text-md.font-bold !{flash.title}
+            if flash.image
+              img.mx-auto.my-20(src=flash.image)
+            p.text-grey-dark.text-base !{flash.description}

@@ -1,0 +1,29 @@
+extends ../layouts/base
+
+append content
+    div.homepage
+        //- Page Title
+        +pageTitle(pageMeta)
+
+        //- Categories
+        if categories && categories.length
+            each category in categories
+                .section-category.pt-50(class="md:pt-120")
+                    .container.mx-auto.pl-20.pr-20(class="md:pl-50 md:pr-50")
+                        h2.text-sm.flex.items-center
+                            | !{__('categories.title', { category: category.category.name })}
+                            span.text-10.ml-2.mr-2 \
+                            a.text-10(href="", class="hover:text-primary")
+                                | #{__('view_all')}
+                        .grid.mt-50(class="sm:grid-cols-1 sm:gap-0 md:grid-cols-3 md:gap-20 lg:grid-cols-4")
+                            if category.categoryCourse
+                                each course in category.categoryCourse
+                                    +card(course)
+                            else
+                                p.text-center.text-base
+                                | #{__('course.empty')}
+
+        if !isLoggedIn || typeof isLoggedIn == 'undefined'
+            +cta()
+        else
+            .mb-120

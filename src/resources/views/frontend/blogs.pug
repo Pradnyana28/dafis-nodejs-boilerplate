@@ -1,0 +1,22 @@
+extends ../layouts/base
+
+append content
+    div.homepage
+        //- Page Title
+        +pageTitle(pageMeta)
+
+        //- Blogs
+        .bg-gray.section-blogs.pt-50(class="md:pt-120 md:pb-120")
+            .container.mx-auto.pl-20.pr-20(class="md:pl-50 md:pr-50")
+                .grid.gap-4(class="md:grid-cols-3")
+                    //- Left column
+                    .col-span-2
+                        if blogs
+                            each blog in blogs
+                                .mb-15
+                                    +articleFull(blog)
+                        else
+                            p No article to read.
+                    //- Right column
+                    //- .right-column
+                    //-     p Right column

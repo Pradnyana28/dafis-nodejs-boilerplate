@@ -1,0 +1,17 @@
+FROM node:alpine
+
+# Set working directory
+WORKDIR '/app'
+# Install require module
+RUN apk update && apk add g++ make bash zlib-dev libpng-dev libtool automake autoconf nasm && rm -fr /var/cache/apk/*
+# Copy NPM Package
+COPY 'package.json' .
+RUN npm install
+RUN npm install nodemon -g
+# Copy project files
+COPY dist .
+COPY public .
+COPY types .
+COPY src .
+# Run command
+CMD ["nodemon"]
