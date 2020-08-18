@@ -1,6 +1,6 @@
 # Release Notes
 
-## V 1.0.0 (18 August 2020)
+## V 1.0.0 (Tue, 18 August 2020)
 
 **_ Added _**
 
