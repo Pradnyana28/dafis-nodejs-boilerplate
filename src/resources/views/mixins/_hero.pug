@@ -1,0 +1,18 @@
+include ./_button.pug
+
+mixin hero()
+    .hero.bg-primary.w-full
+        .container.mx-auto.items-center.justify-between.pl-20.pr-20.pt-120.pb-50(class="md:flex md:flex-row md:pl-50 md:pr-50")
+            .hero-text
+                h2.text-xl.text-white.font-bold.mb-30
+                    | !{__('hero.hero_title')}
+                p.text-white.mb-30.text-18
+                    | !{__('hero.hero_description', { companyName: app.title })}
+                +button(route.courses, 'linear')
+                    | !{__('hero.button_label')}
+                p.text-white.mt-30.text-12
+                    | * !{__('hero.subtitle', { subscribeLink: route.register })}
+            
+            .hero-illustration.hidden(class="md:block")
+                img(class="lg:max-w-400 lg:max-w-512 sm:max-w-300", src="/resources/images/hero-illustration.png")
+

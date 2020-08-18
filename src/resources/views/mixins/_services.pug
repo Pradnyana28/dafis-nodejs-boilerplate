@@ -1,0 +1,21 @@
+mixin services()
+    .container.mx-auto.p-20(class="md:p-50")
+        .grid.gap-20(class="md:grid-cols-3")
+            .text-center
+                i.m-auto(data-feather="award", width="80", height="80", stroke-width="1")
+                h3.mt-30.mb-30.font-semi-bold.text-base(class="lg:text-sm")
+                    | #{__('services.professional_instructor.title')}
+                p.text-10(class="lg:text-base")
+                    | #{__('services.professional_instructor.description')}
+            .text-center
+                i.m-auto(data-feather="clock", width="80", height="80", stroke-width="1")
+                h3.mt-30.mb-30.font-semi-bold.text-base(class="lg:text-sm")
+                    | #{__('services.lifetime_access.title')}
+                p.text-10(class="lg:text-base")
+                    | #{__('services.lifetime_access.description')}
+            .text-center
+                i.m-auto(data-feather="users", width="80", height="80", stroke-width="1")
+                h3.mt-30.mb-30.font-semi-bold.text-base(class="lg:text-sm")
+                    | #{__('services.for_everyone.title')}
+                p.text-10(class="lg:text-base")
+                    | #{__('services.for_everyone.description')}

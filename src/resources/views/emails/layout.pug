@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+html(lang="en", xmlns="http://www.w3.org/1999/xhtml")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="Content-Type", content="text/html; charset=UTF-8")
+        title #{title}
+
+        link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap")
+        style.
+            .font-family {
+                font-family: Poppins, montserrat, sans-serif;
+            }
+            .border-box {
+                box-sizing: border-box;
+            }
+            .m-auto {
+                margin: 0 auto;
+            }
+            .w-full {
+                width: 100%;
+            }
+            .bg-primary {
+                background-color: #013c4d;
+            }
+            .bg-white {
+                background-color: #ffffff;
+            }
+            .max-w-body {
+                max-width: 570px;
+            }
+            .box-shadow {
+                box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+            }
+            .p-2 {
+                padding: 20px;
+            }
+            .p-3 {
+                padding: 30px;
+            }
+            .rounded {
+                border-radius: 8px;
+            }
+            .text-center {
+                text-align: center;
+            }
+            .mb-1 {
+                margin-bottom: 10px;
+            }
+            .mb-2 {
+                margin-bottom: 20px;
+            }
+            .color-primary {
+                color: #013c4d;
+            }
+            .color-secondary {
+                color: #f3e5b1;
+            }
+
+            @media only screen and(max-width:600px) {
+                .inner-body {
+                    width: 100%!important
+                }
+                .footer {
+                    width: 100%!important
+                }
+            }
+            @media only screen and(max-width:500px) {
+                .button {
+                    width: 100%!important
+                }
+            }
+
+    - var today = new Date();
+    body.font-family.border-box(style="background-color: #f5f8fa; color: #74787e; height: 100%; hyphens: auto; line-height: 1.4; margin: 0; -moz-hyphens: auto; -ms-word-break: break-all; width: 100% !important; -webkit-hyphens: auto; -webkit-text-size-adjust: none; word-break: break-word;")
+        table.font-family.wrapper.border-box.w-full(cellpadding='0' cellspacing='0' style=' background-color: #f5f8fa; margin: 0; padding: 0;  -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-')
+            tr
+                td.font-family.border-box(align='center')
+                    table.content.border-box.w-full.w-full(width='100%' cellpadding='0' cellspacing='0' style=' margin: 0; padding: 0;  -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-')
+                        tr
+                            td.border-box.font-family.header.p-2.text-center
+                                a.border-box(href=app.url style='color: #bbbfc3; font-size: 19px; font-weight: bold; text-decoration: none; text-shadow: 0 1px 0 #ffffff;')
+                                | #{app.title}
+                        tr
+                            td.w-full.font-family.border-box.content-cell(align='center')
+                                table.rounded.box-shadow.m-auto.border-box.body.w-full.max-w-body.bg-white(cellpadding='0' cellspacing='0' style='-premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-')
+                                    tr
+                                        td.w-full.p-3.font-family.border-box.content-cell
+                                            block content
+            tr
+                td.font-family.border-box
+                    table.m-auto.font-family.border-box.footer.w-full.max-w-body(align='center' cellpadding='0' cellspacing='0' style='padding: 0; text-align: center; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 570px;')
+                        tr
+                            td.font-family.border-box.content-cell.p-2.text-center
+                                p.font-family(style='line-height: 1.5em; margin-top: 0; color: #aeaeae; font-size: 10px; text-align: center;')
+                                | !{__('copyright')}

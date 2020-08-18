@@ -1,0 +1,12 @@
+extends ../layout
+
+append content
+    p.mb-2 Hi <b class="color-primary">#{data.fullName}</b>,
+    p.mb-2 
+        | !{__('email.registration_complete.paragraph_1', { title: app.title })}.
+        | !{__('email.registration_complete.paragraph_2', { title: app.title })}.
+    p.mb-2
+        | !{__('email.registration_complete.paragraph_3')}.
+    p.mb2
+        | Salam Hormat.<br />
+        | I Kadek Pradnyana.

@@ -1,0 +1,27 @@
+extends ../layouts/app
+
+include ../mixins/_button
+
+append appContent
+  img.fixed.top-0.left-0.-mt-200(src="/resources/images/circles-illustration.png")
+  img.fixed.bottom-0.right-0.-mb-120(src="/resources/images/circles-illustration-small.png")
+  div.w-full.bg-primary.overflow-y-auto
+    a.block.fixed.left-0.top-0.w-full.p-20.z-10(href=route.home, title="Home page")
+      h2.text-white.text-md.font-bold #{app.title}
+
+    .container.mx-auto.px-20.py-20.h-screen.relative(class="md:px-0 md:py-50")
+      .form.flex.flex-row.items-center.justify-between.px-20.absolute.w-full.left-50.top-50.transform-translate-50
+        .w-full.text-center
+          h2.text-white.text-md.font-bold !{__('auth.reset_password')}
+          p.text-grey-dark.text-base !{__('auth.reset_password_description')}
+
+          form.w-full.max-w-300.mx-auto.mt-20(class="md:mt-50", ja-request=route.forgot, ja-ajax, ja-type="post", autocomplete="off")
+            input(type="hidden", name="_csrf", value=csrfToken)
+
+            .block.text-center
+              input.border-b.border-grey-dark.bg-transparent.text-grey-dark.py-20.w-full.outline-none(type="text", placeholder=__('auth.email'), name="email")
+              span.hidden.text-left.validation.email-validation.text-10.text-secondary
+
+            .mt-50
+              button.inline-block.text-base.px-30.py-15.leading-none.rounded-6.text-white.text-center.bg-primary-soft.mt-4(ja-send, class='hover:bg-primary-soft lg:mt-0')
+                | !{__('auth.reset_now')}

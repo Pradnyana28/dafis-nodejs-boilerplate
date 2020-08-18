@@ -1,0 +1,12 @@
+include ./_button
+
+mixin cta()
+  .section-cta.mt-120.pt-50.pb-50.bg-primary-cta
+    .container.mx-auto.items-center.justify-between.pl-20.pr-20(class="md:flex md:flex-row md:m-auto md:pl-50 md:pr-50")
+        .cta-information
+          h3.text-white.text-lg.font-bold.mb-15 #{__('cta.enroll_now')}
+          p.text-white.text-base.mb-15 !{__('cta.description')}
+          +button("#!", "linear")
+            | #{__('cta.enroll_now')}
+        .cta-illustration.hidden(class="md:block")
+          img(class="md:max-w-400 lg:max-w-512 sm:max-w-300", src="/resources/images/cta-illustration.png")

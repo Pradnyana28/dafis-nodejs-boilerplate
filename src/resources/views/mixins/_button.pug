@@ -1,0 +1,19 @@
+mixin button(link="#",type='outline',size='medium')
+  if type == 'primary'
+    a.inline-block.text-base.px-30.py-15.leading-none.border.rounded-6.text-white.text-center.bg-primary.mt-4(href=link, class='hover:bg-primary-soft lg:mt-0')
+      if block
+        block
+      else
+        | Button
+  if type == 'linear'
+    a.inline-block.text-base.px-30.py-15.leading-none.rounded-6.text-primary.text-center.bg-gradient-primary.mt-4(href=link, class='hover:text-white lg:mt-0')
+      if block
+        block
+      else
+        | Button
+  if type == 'outline'
+    a.inline-block.text-base.px-30.py-15.leading-none.border.rounded-6.text-white.text-center.border-white.mt-4(href=link, class='hover:border-transparent hover:text-primary hover:bg-white lg:mt-0')
+      if block
+        block
+      else
+        | Button

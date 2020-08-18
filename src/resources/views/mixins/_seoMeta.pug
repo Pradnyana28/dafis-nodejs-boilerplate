@@ -1,0 +1,9 @@
+mixin seo_meta(pageMeta)
+    if pageMeta
+        meta(name="title", content=pageMeta.title)
+        meta(name="description", content=pageMeta.description)
+        meta(name="keyword", content=pageMeta.keyword)
+        if pageMeta.robots
+            meta(name="robots", content=pageMeta.robots)
+        else
+            meta(name="keyword", content="index,follow")

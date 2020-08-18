@@ -1,0 +1,54 @@
+extends ../layouts/app
+
+include ../mixins/_button
+include ../mixins/_seoMeta
+
+append head
+  +seo_meta(pageMeta)
+
+append appContent
+  .fixed.w-full.h-full
+    img.fixed.top-0.left-0.-mt-200(src="/resources/images/circles-illustration.png")
+    img.fixed.bottom-0.right-0.-mb-120(src="/resources/images/circles-illustration-small.png")
+    div.w-full.bg-primary.overflow-y-auto
+      a.block.fixed.left-0.top-0.w-full.p-20.z-10(href=route.home, title="Home page")
+        h2.text-white.text-sm.font-bold(class="md:text-md") #{app.title}
+
+      .container.mx-auto.px-20.py-20.h-screen.relative(class="md:px-0 md:py-50")
+        .form.flex.flex-row.items-center.justify-between.px-20.absolute.w-full.left-50.top-50.transform-translate-50
+          .w-full.text-center.h-full.mt-20(class="md:mt-0 md:h-auto")
+            h2.text-white.font-bold(class="md:text-md") !{__('auth.signin')}
+            p.text-grey-dark.text-12(class="md:text-base") !{__('auth.subtitle')}
+
+            form.w-full.max-w-300.mx-auto.mt-20(class="md:mt-50", ja-request=route.signin, ja-ajax, ja-type="post", autocomplete="off")
+              input(type="hidden", name="_csrf", value=csrfToken)
+
+              .block.text-center
+                input.border-b.border-grey-dark.bg-transparent.text-grey-dark.text-12.py-10.w-full.outline-none(class="md:text-base md:py-20", type="text", placeholder=__('auth.username_email'), name="username")
+                span.hidden.text-left.validation.username-validation.text-10
+              .block.text-center.relative
+                input.border-b.border-grey-dark.bg-transparent.text-grey-dark.text-12.py-10.w-full.outline-none(class="md:text-base md:py-20", type="password", placeholder=__('auth.password'), name="password")
+                i#show-password.text-grey-dark.absolute.right-0.top-0.mt-10(class="md:mt-25", data-feather="eye-off", data-target="input[name=password]")
+                i#hide-password.hidden.text-grey-dark.absolute.right-0.top-0.mt-10(class="md:mt-25", data-feather="eye", data-target="input[name=password]")
+                span.hidden.text-left.validation.password-validation.text-10
+
+              .grid.grid-cols-2.gap-20.mt-30
+                label.custom-label.flex
+                  .w-4.h-4.flex.justify-center.items-center.mr-2
+                    input.hidden(type='checkbox' checked='', name="remember")
+                    i.hidden.checkbox-square.w-4.h-4.text-secondary.pointer-events-none(data-feather="check-square")
+                    i.block.checkbox-default.w-4.h-4.text-grey-dark.pointer-events-none(data-feather="square")
+                  span.text-grey-dark.text-12 !{__('auth.remember')}
+                a.text-grey-dark.text-right.text-12(href=route.forgot, class="hover:text-secondary") !{__('auth.forgot_password')}?
+              
+              .mt-20(class="md:mt-50")
+                button.inline-block.text-base.px-30.py-15.leading-none.rounded-6.text-white.text-center.bg-primary-soft.mt-4(ja-send, class='hover:bg-primary-soft lg:mt-0')
+                  | !{__('auth.signin')}
+              
+              .mt-10(class="md:mt-30")
+                  p.text-grey-dark.text-10.text-center #{__('auth.dont_have_account')}? &nbsp;
+                    a.text-secondary(href=route.register) #{__('auth.create_new_account')}
+
+              .mt-20(class="md:mt-50")
+                p.text-10.text-grey-soft
+                  | !{__('auth.term_condition', { termLink: route.terms, className: 'text-secondary' })}

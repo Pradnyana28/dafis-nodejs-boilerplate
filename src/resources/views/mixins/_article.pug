@@ -1,0 +1,18 @@
+mixin article(opt)
+    .flex.flex-row.flex-wrap.rounded-6.shadow-primary
+        .relative
+            .absolute.left-0.bottom-0.w-100.bg-gradient-secondary.w-full.h-full.rounded-6
+            img.w-full(src=opt.image, alt=opt.title)
+            .absolute.bottom-0.right-0.border-none.p-20.z-2
+                h3.text-base.text-white.font-bold #{opt.title}
+                p.text-10.text-white #{opt.subtitle}
+
+mixin articleFull(opt)
+    .flex.flex-row.flex-wrap.rounded-6.shadow-primary
+        img.w-full(src=opt.image, alt=opt.title)
+        .w-full.bottom-0.right-0.border-none.p-20.z-2
+            h3.text-sm.font-bold.mb-10 #{opt.title}
+            p.text-base.mb-10 #{opt.description}
+            p.text-10.mb-10 #{opt.note}
+            a.font-bold.text-primary(href=opt.url, alt=opt.title, class="hover:text-primary-soft")
+                | #{__('read_more')}

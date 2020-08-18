@@ -1,0 +1,15 @@
+include ./_button
+
+mixin card(opt)
+    .flex.flex-row.flex-wrap.rounded-6.shadow-primary.overflow-hidden
+        .relative
+            .absolute.left-0.bottom-0.w-100.bg-gradient-secondary.w-full.h-full.rounded-6
+            img.w-full(src=opt.image, alt=opt.title)
+            button.bookmark-button.absolute.bottom-0.right-0.border-none.p-20.background-none.z-2.text-secondary(data-bookmark=opt.id, class="focus:outline-none")
+                i(data-feather="bookmark",width="24",height="24",fill=(opt.bookmark && "fill-secondary"),class=(opt.bookmark ? "fill-secondary" : "hover:fill-secondary"))
+        .flex.flex-col.p-20.w-full
+            h3.text-base.text-primary.font-semi-bold.mb-15 #{opt.title}
+            small.text-10.text-grey-natural.mb-15 #{opt.shortInfo}
+            p.text-10.mb-15 #{opt.subtitle}
+            +button(opt.actionLink, "primary")
+                | #{__('course.start_now')}

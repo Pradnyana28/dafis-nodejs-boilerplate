@@ -1,0 +1,26 @@
+extends ../../layouts/app
+
+include ../../mixins/_button
+include ../../mixins/_seoMeta
+
+append head
+  +seo_meta(pageMeta)
+
+append appContent
+  .fixed.w-full.h-full
+    img.fixed.top-0.left-0.-mt-200(src="/resources/images/circles-illustration.png")
+    img.fixed.bottom-0.right-0.-mb-120(src="/resources/images/circles-illustration-small.png")
+    div.w-full.bg-primary.overflow-y-auto
+      a.block.fixed.left-0.top-0.w-full.p-20.z-10(href=route.home, title="Home page")
+        h2.text-white.text-sm.font-bold(class="md:text-md") #{app.title}
+
+      .container.mx-auto.px-20.py-20.h-screen.relative(class="md:px-0 md:py-50")
+        .form.flex.flex-row.items-center.justify-between.px-20.absolute.w-full.left-50.top-50.transform-translate-50
+          .w-full.text-center.h-full.mt-20(class="md:mt-0 md:h-auto")
+            img.m-auto.w-full.text-center.max-w-280(src="/resources/images/error-page-illustration.png")
+            h2.text-xl.text-secondary.font-bold.mt-30
+              | #{errors.code}
+            h1.text-lg.text-secondary.font-semi-bold.mb-30
+              | #{errors.title}
+            p.text-white.text-18
+              | #{errors.description}

@@ -1,0 +1,20 @@
+extends ./app
+
+include ../mixins/_seoMeta
+include ../mixins/_button
+include ../mixins/_navigation
+include ../mixins/_footer
+include ../mixins/_hero
+include ../mixins/_pageTitle
+include ../mixins/_card
+include ../mixins/_article
+include ../mixins/_cta
+include ../mixins/_services
+
+append head
+  +seo_meta(pageMeta)
+
+append appContent
+  +navigation()
+  block content
+  +footer()
