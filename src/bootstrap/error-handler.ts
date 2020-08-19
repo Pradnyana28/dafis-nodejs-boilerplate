@@ -13,7 +13,7 @@ const errorHandler = (app: Application): Application => {
     // handle 404 page
     app.use((req: Request, res: Response, next: NextFunction) => {
         res.status(404);
-        app.get('api') && req.api
+        req.api
             ? res.json({ success: false, message: "Module not found" })
             : res.render('frontend/errors/404', {
                 pageTitle: res.__('page_not_found') + ' | ' + global.config.app.title,
@@ -32,7 +32,7 @@ const errorHandler = (app: Application): Application => {
         // error handler for api
         app.use((err: ErrorRequestHandler, req: Request, res: Response, next: NextFunction) => {
             res.status(500);
-            app.get('api') && req.api
+            req.api
                 ? res.json({ success: false, message: "Something went wrong!" })
                 : res.render('frontend/errors/500', {
                     pageTitle: res.__('internal_server_error') + ' | ' + global.config.app.title,

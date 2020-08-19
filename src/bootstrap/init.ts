@@ -15,7 +15,6 @@ export default async (app: Application): Promise<Application> => {
     app.set('host', '0.0.0.0');
     app.set('env', process.env.NODE_ENV || 'production');
     app.set('port', process.env.APP_PORT || 8080);
-    app.set('api', false);
 
     try {
         // setup mongoose
