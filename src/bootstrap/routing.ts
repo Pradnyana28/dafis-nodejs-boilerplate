@@ -8,6 +8,7 @@ import compression from 'compression';
 import connectFlash from 'connect-flash';
 
 import web from '@routes/web';
+import api from '@routes/api';
 import passportConfig from './passport';
 import webRoute from '@routes/route';
 import responser, { IResponser } from '@utils/responser';
@@ -28,7 +29,31 @@ class Routing {
         return this.app.get('env') == 'development' ? false : req.originalUrl;
     }
 
-    public setup(app: Application): Application {
+    public async api(app: Application): Promise<Application> {
+        /**
+         * Invoice api routes
+         * ---------------------------
+         * Initialize all api route here,
+         * Redirect to 404 if no api request detected
+         */
+        app.use(global.config.app.api_prefix, (req, res, next) => {
+            if (!req.api) {
+                return res.render('frontend/errors/404', {
+                    pageTitle: res.__('page_not_found') + ' | ' + global.config.app.title,
+                    errors: {
+                        code: 404,
+                        title: res.__('page_not_found'),
+                        description: res.__('page_not_found_information')
+                    }
+                })
+            }
+            next();
+        }, api(app, this.cache));
+
+        return app;
+    }
+
+    public async web(app: Application): Promise<Application> {
         passportConfig(passport);
         app.set('views', path.join(__dirname, '../resources/views'));
         app.set('view engine', 'pug');
@@ -65,13 +90,22 @@ class Routing {
             next();
         });
         app.locals.route = webRoute;
-        web(app, this.cache);
-        // this.app = app;
+
+        /**
+         * Invoice web routes
+         * ---------------------------
+         * Initialize all web route here
+         */
+        app.use(web(app, this.cache));
+
         return app;
     }
 
-    public init(): Application {
-        let server = this.setup(this.app);
+    public async init(): Promise<Application> {
+        let server = this.app;
+
+        server = await this.api(server);
+        server = await this.web(server);
 
         return server;
     }

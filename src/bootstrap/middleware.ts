@@ -122,7 +122,6 @@ export default (app: Application): Application => {
         res.header('X-Content-Type-Options', 'nosniff');
         res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, OPTIONS, DELETE');
         if (req.headers['accept'].split(',').indexOf('application/json') >= 0) {
-            app.set('api', true);
             req.api = true;
         }
         next();
