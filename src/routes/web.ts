@@ -9,7 +9,7 @@ import frontRoute from '@routes/front';
  */
 export default (app: Application, cache): void => {
     // Admin route start with admin prefix
-    app.use(global.config.app.admin_prefix, adminRoute);
+    app.use(global.config.app.admin_prefix, adminRoute(app, cache));
     // Front route start with /
     app.use(frontRoute(app, cache));
 }
