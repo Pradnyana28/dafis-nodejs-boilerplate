@@ -1,41 +1,6 @@
 mixin footer()
     footer.bg-primary.pt-50.pb-50
         .container.mx-auto.pl-20.pr-20(class="md:pl-50 md:pr-50")
-            .grid.mb-120(class="sm:grid-cols-1 sm:gap-0 md:grid-cols-3 md:gap-20 lg:grid-cols-4")
-                .logo
-                    if app.logo
-                        img.w-full(src=app.logo, alt=app.title)
-                    else
-                        h3.text-white.text-lg #{app.title}
-                .others
-                    p.text-18.text-grey-skin.text-semi-bold.mb-30 #{__('footer.others')}
-                    ul
-                        li.mb-30
-                            a.text-white.text-base(href=route.about_us) #{__('footer.about_us')}
-                        li.mb-30
-                            a.text-white.text-base(href="/how-it-work") #{__('footer.how_it_work')}
-                        li.mb-30
-                            a.text-white.text-base(href="/features") #{__('footer.features')}
-                .help
-                    p.text-18.text-grey-skin.text-semi-bold.mb-30 #{__('footer.help')}
-                    ul
-                        li.mb-30
-                            a.text-white.text-base(href="/contact-us") #{__('footer.contact_us')}
-                        li.mb-30
-                            a.text-white.text-base(href="/faqs") #{__('footer.faqs')}
-                .connect
-                    p.text-18.text-grey-skin.text-semi-bold.mb-30 #{__('footer.social_media')}
-                    ul.flex
-                        li
-                            a.text-white.text-base(href=app.social.facebook)
-                                i(data-feather="facebook", width="24", height="24")
-                        li
-                            a.text-white.text-base(href=app.social.twitter)
-                                i(data-feather="twitter", width="24", height="24")
-                        li
-                            a.text-white.text-base(href=app.social.instagram)
-                                i(data-feather="instagram", width="24", height="24")
-
             hr.border-grey-dark
             .grid.gap-20.pb-20.pt-50(class="md:grid-cols-2")
                 p.text-white.text-base #{__('footer.copyright')}.

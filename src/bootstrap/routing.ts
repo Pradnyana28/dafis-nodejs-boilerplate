@@ -45,8 +45,6 @@ class Routing {
     }
 
     public async api(app: Application): Promise<Application> {
-
-
         /**
          * Invoice api routes
          * ---------------------------
@@ -88,8 +86,6 @@ class Routing {
                 baseUrl: req.baseUrl,
                 path: req.path
             };
-            // renderer
-            res._render = new Responser(res);
             next();
         });
         app.locals.route = webRoute;
@@ -105,12 +101,18 @@ class Routing {
     }
 
     public async init(): Promise<Application> {
-        let server = this.app;
+        let app = this.app;
 
-        server = await this.api(server);
-        server = await this.web(server);
+        app.use((req: Request, res: Response, next: NextFunction) => {
+            // register custom render
+            res._render = new Responser(res);
+            next();
+        });
 
-        return server;
+        app = await this.api(app);
+        app = await this.web(app);
+
+        return app;
     }
 }
 
