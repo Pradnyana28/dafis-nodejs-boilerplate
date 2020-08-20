@@ -11,7 +11,7 @@ import web from '@routes/web';
 import api from '@routes/api';
 import passportConfig from './passport';
 import webRoute from '@routes/route';
-import responser, { IResponser } from '@utils/responser';
+import Responser, { IResponser } from '@utils/responser';
 
 class Routing {
     private app: Application;
@@ -29,26 +29,31 @@ class Routing {
         return this.app.get('env') == 'development' ? false : req.originalUrl;
     }
 
+    private accessForAPIOnly(req: Request, res: Response, next: NextFunction): void {
+        if (!req.api) {
+            return res.render('frontend/errors/404', {
+                pageTitle: res.__('page_not_found') + ' | ' + global.config.app.title,
+                errors: {
+                    code: 404,
+                    title: res.__('page_not_found'),
+                    description: res.__('page_not_found_information')
+                }
+            })
+        }
+
+        return next();
+    }
+
     public async api(app: Application): Promise<Application> {
+
+
         /**
          * Invoice api routes
          * ---------------------------
          * Initialize all api route here,
          * Redirect to 404 if no api request detected
          */
-        app.use(global.config.app.api_prefix, (req, res, next) => {
-            if (!req.api) {
-                return res.render('frontend/errors/404', {
-                    pageTitle: res.__('page_not_found') + ' | ' + global.config.app.title,
-                    errors: {
-                        code: 404,
-                        title: res.__('page_not_found'),
-                        description: res.__('page_not_found_information')
-                    }
-                })
-            }
-            next();
-        }, api(app, this.cache));
+        app.use(global.config.app.api_prefix, this.accessForAPIOnly, api(app, this.cache));
 
         return app;
     }
@@ -84,9 +89,7 @@ class Routing {
                 path: req.path
             };
             // renderer
-            const response: IResponser = responser(res);
-            res._render = response._render;
-            res._ajax = response._ajax;
+            res._render = new Responser(res);
             next();
         });
         app.locals.route = webRoute;
