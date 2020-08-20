@@ -30,15 +30,15 @@ class AuthController extends Controller {
     public SignIn = (req: Request, res: Response, next: NextFunction): void => {
         passport.authenticate('local', (err, user) => {
             if (err || !user) {
-                return res._ajax([{
+                return res._render.isFail().ajax([{
                     username: res.__('validation.credentials_invalid')
-                }], null, false);
+                }], null);
             }
             req.login(user, (err) => {
                 if (err) {
                     return next(err);
                 }
-                return res._ajax({}, webRoute.user.profile.replace(':username', user.username));
+                return res._render.ajax({}, webRoute.user.profile.replace(':username', user.username));
             });
         })(req, res, next);
     }
@@ -64,10 +64,10 @@ class AuthController extends Controller {
             // send user email confirmation
             new RegisterConfirmationMail(user).send();
 
-            return res._ajax(null, UserModel.redirectWhenRegister + '?email=' + req.body.email);
+            return res._render.ajax(null, UserModel.redirectWhenRegister + '?email=' + req.body.email);
         } catch (err) {
             this.logger.error('Failed insert user', err, __filename);
-            return res._ajax(null, null, false);
+            return res._render.isFail().ajax(null, null);
         }
     }
 
@@ -110,7 +110,7 @@ class AuthController extends Controller {
     public ForgotPassword = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
         try {
             await new ForgotPasswordMail(req.user).send();
-            return res._ajax(null, webRoute.flashMessage.replace(':action', 'forgot-password-success') + '?email=' + req.body.email);
+            return res._render.ajax(null, webRoute.flashMessage.replace(':action', 'forgot-password-success') + '?email=' + req.body.email);
         } catch (err) {
             this.logger.error('Failed while sending reset password mail', err, __filename);
             next(err);
@@ -127,7 +127,7 @@ class AuthController extends Controller {
      * @param next express NextFunction
      */
     public ResetPassword = (req: AuthRequest, res: Response, next: NextFunction): void => {
-        return res._render('frontend/resetPassword', {
+        return res._render.html('frontend/resetPassword', {
             userId: req.params.userId,
             key: req.params.key,
             pageTitle: this.pageTitle(res.__('auth.create_new_password')),
@@ -156,9 +156,9 @@ class AuthController extends Controller {
                 const options: Map<any, any> = user.options;
                 options.delete('resetPassword');
                 await UserModel.updateOne({ _id: req.params.userId }, { password: newPassword, options });
-                return res._ajax(null, webRoute.flashMessage.replace(':action', 'reset-password-success'));
+                return res._render.ajax(null, webRoute.flashMessage.replace(':action', 'reset-password-success'));
             }
-            return res._ajax([{ password: res.__('validation.reset_password_invalid') }], null, false);
+            return res._render.isFail().ajax([{ password: res.__('validation.reset_password_invalid') }], null);
         } catch (err) {
             this.logger.error('Failed while updating user password', err, __filename);
             next(err);

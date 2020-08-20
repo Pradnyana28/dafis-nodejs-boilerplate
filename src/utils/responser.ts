@@ -6,9 +6,13 @@ import Logger, { ILogger } from './logger';
  * -----------------------------------------
  */
 export interface IResponser {
-    _render(view: string, data?: any, status?: number);
-    _ajax(data?: any, redirect?: string, statusCode?: number);
-    _json(data: any, statusCode?: number);
+    isSuccess();
+    isFail();
+    setErrors(errors: string[]);
+
+    ajax(data?: any, redirect?: string, statusCode?: number);
+    html(view: string, data?: any, status?: number);
+    json(data: any, statusCode?: number);
 }
 
 /**
@@ -43,7 +47,7 @@ class Responser implements IResponser {
         return this;
     }
 
-    public _ajax(data?: any, redirect: string = global.config.app.redirect, statusCode: number = 200): Response {
+    public ajax(data?: any, redirect: string = global.config.app.redirect, statusCode: number = 200): Response {
         return this.expressResponse
             .status(statusCode)
             .json({
@@ -53,7 +57,7 @@ class Responser implements IResponser {
             });
     }
 
-    public _render(view: string, data?: any, statusCode: number = 200): void {
+    public html(view: string, data?: any, statusCode: number = 200): void {
         return this.expressResponse
             .status(statusCode)
             .render(view, data,
@@ -64,7 +68,7 @@ class Responser implements IResponser {
             );
     }
 
-    public _json(message: string, data: any = null, statusCode: number = 200): Response {
+    public json(message: string, data: any = null, statusCode: number = 200): Response {
         return this.expressResponse
             .status(statusCode)
             .json({
