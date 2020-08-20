@@ -10,7 +10,7 @@ import i18n, { ConfigurationOptions } from 'i18n';
 import path from 'path';
 
 export const i18nConfig: ConfigurationOptions = {
-    locales: ['en'],
+    locales: ['en', 'id'],
     directory: path.join(__dirname, '../resources/lang'),
     objectNotation: true,
     updateFiles: false,
