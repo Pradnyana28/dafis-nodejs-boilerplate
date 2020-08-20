@@ -26,7 +26,7 @@ class Responser implements IResponser {
     private success = true;
     private expressResponse: Response = null;
     private logger: ILogger = new Logger();
-    private errors: string[] = [];
+    private errors: string[] = null;
 
     constructor(res: Response) {
         this.expressResponse = res;
