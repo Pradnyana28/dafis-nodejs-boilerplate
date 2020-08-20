@@ -6,34 +6,81 @@ import Logger, { ILogger } from './logger';
  * -----------------------------------------
  */
 export interface IResponser {
-    _render(view: string, data: any);
-    _render(view: string, data: any, status: number);
+    isSuccess();
+    isFail();
+    setErrors(errors: string[]);
 
-    _ajax();
-    _ajax(data: any, redirect: string, status: boolean);
+    ajax(data?: any, redirect?: string, statusCode?: number);
+    html(view: string, data?: any, status?: number);
+    json(data: any, statusCode?: number);
 }
 
 /**
- * @method responser
+ * @class Responser
  * ------------------------------------------
  * A response helper for express base Response
  * ------------------------------------------
  * @param res express response
  */
-const responser = (res: Response): IResponser => {
-    const logger: ILogger = new Logger();
+class Responser implements IResponser {
+    private success = true;
+    private expressResponse: Response = null;
+    private logger: ILogger = new Logger();
+    private errors: string[] = null;
 
-    return {
-        _ajax: (data?: any, redirect: string = global.config.app.redirect, status: boolean = true) => {
-            return res.status(200).json({ success: status, messages: data, redirect });
-        },
-        _render: (view: string, data?: any, status: number = 200) => {
-            return res.status(status).render(view, data, (err, html) => {
-                if (err) logger.error('Failed while rendering html', err, __filename);
-                res.send(html);
+    constructor(res: Response) {
+        this.expressResponse = res;
+    }
+
+    public isSuccess(): this {
+        this.success = true;
+        return this;
+    }
+
+    public isFail(): this {
+        this.success = false;
+        return this;
+    }
+
+    public setErrors(errors: string[]): this {
+        this.errors = errors;
+        return this;
+    }
+
+    public ajax(data?: any, redirect: string = global.config.app.redirect, statusCode: number = 200): Response {
+        return this.expressResponse
+            .status(statusCode)
+            .json({
+                success: this.success,
+                messages: data,
+                redirect
             });
-        }
-    };
+    }
+
+    public html(view: string, data?: any, statusCode: number = 200): void {
+        return this.expressResponse
+            .status(statusCode)
+            .render(view, data,
+                (err, html) => {
+                    if (err) this.logger.error('Failed while rendering html', err, __filename);
+                    this.expressResponse.send(html);
+                }
+            );
+    }
+
+    public json(message: string, data: any = null, statusCode: number = 200): Response {
+        return this.expressResponse
+            .status(statusCode)
+            .json({
+                status: {
+                    success: this.success,
+                    code: statusCode,
+                    message: message
+                },
+                errors: this.errors,
+                data
+            });
+    }
 }
 
-export default responser;
+export default Responser;

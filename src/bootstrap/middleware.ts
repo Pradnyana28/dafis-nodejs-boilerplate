@@ -10,7 +10,7 @@ import i18n, { ConfigurationOptions } from 'i18n';
 import path from 'path';
 
 export const i18nConfig: ConfigurationOptions = {
-    locales: ['en'],
+    locales: ['en', 'id'],
     directory: path.join(__dirname, '../resources/lang'),
     objectNotation: true,
     updateFiles: false,
@@ -122,7 +122,6 @@ export default (app: Application): Application => {
         res.header('X-Content-Type-Options', 'nosniff');
         res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, OPTIONS, DELETE');
         if (req.headers['accept'].split(',').indexOf('application/json') >= 0) {
-            app.set('api', true);
             req.api = true;
         }
         next();

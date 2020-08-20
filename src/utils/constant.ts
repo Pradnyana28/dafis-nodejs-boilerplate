@@ -8,7 +8,7 @@ import webRoute from "@routes/route";
  * ---------------------------------------------
  */
 export interface IConstant {
-    app: { admin_prefix, title, logo, redirect, url, social: { facebook, twitter, instagram }, directives },
+    app: { admin_prefix, api_prefix, title, logo, redirect, url, social: { facebook, twitter, instagram }, directives },
     flashActions: string[],
     mail: { host, port, secure, username, password, from }
 }
@@ -28,6 +28,7 @@ const constant = (env: any = {}): IConstant => ({
     // app default setting
     app: {
         admin_prefix: env.ADMIN_PREFIX || "/apanel",
+        api_prefix: env.API_PREFIX || "/api/v1",
         title: env.APP_NAME || "Dafis Node.js Boilerplate",
         logo: "",
         redirect: webRoute.home,

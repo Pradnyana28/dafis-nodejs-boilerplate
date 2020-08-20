@@ -67,13 +67,13 @@ class App {
         return server;
     }
 
-    private routing(app: Application): Application {
+    private async routing(app: Application): Promise<Application> {
         /**
          * Routing
          * -------------------------------------------
          * This class contain routing for api or web
          */
-        return new Routing(app).init();
+        return await new Routing(app).init();
     }
 }
 

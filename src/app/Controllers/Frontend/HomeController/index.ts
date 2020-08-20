@@ -17,7 +17,7 @@ class HomeController extends Controller {
      * @param next express NextFunction
      */
     public Index = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-        return res._render('index', {
+        return res._render.html('index', {
             pageTitle: this.pageTitle(res.__('home')),
             pageMeta: {
                 title: "Dafis Node.js Boilerplate",
@@ -37,7 +37,7 @@ class HomeController extends Controller {
      * @param next express NextFunction
      */
     public SignIn = (req: Request, res: Response, next: NextFunction): void => {
-        return res._render('frontend/signin', {
+        return res._render.html('frontend/signin', {
             pageTitle: this.pageTitle(res.__('auth.signin')),
             pageMeta: {}
         });
@@ -53,7 +53,7 @@ class HomeController extends Controller {
      * @param next express NextFunction
      */
     public Register = (req: Request, res: Response, next: NextFunction): void => {
-        return res._render('frontend/register', {
+        return res._render.html('frontend/register', {
             pageTitle: this.pageTitle(res.__('auth.register')),
             pageMeta: {}
         });
@@ -69,7 +69,7 @@ class HomeController extends Controller {
      * @param next express NextFunction
      */
     public ForgotPassword = (req: Request, res: Response, next: NextFunction): void => {
-        return res._render('frontend/forgot', {
+        return res._render.html('frontend/forgot', {
             pageTitle: this.pageTitle(res.__('auth.forgot_password')),
             pageMeta: {}
         });
@@ -91,7 +91,7 @@ class HomeController extends Controller {
             options.emailAddress = req.query.email;
         }
 
-        return res._render('frontend/flash', {
+        return res._render.html('frontend/flash', {
             pageTitle: this.pageTitle(res.__(`flash.${paramAction}.title`)),
             pageMeta: {
                 robots: "noindex,nofollow"

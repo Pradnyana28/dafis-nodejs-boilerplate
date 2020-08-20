@@ -16,8 +16,6 @@ mixin navigation()
                     .text-right(class='lg:flex-grow')
                         a.block.mt-4.text-base.mr-4(href=route.about_us, class=(router.path == route.about_us ? 'text-secondary' : 'text-white'), class='lg:inline-block lg:mt-0 hover:text-secondary')
                             | #{__('navigation.about')}
-                        a.block.mt-4.text-base.mr-4(href=route.courses, class=(router.path == route.courses ? 'text-secondary' : 'text-white'), class='lg:inline-block lg:mt-0 hover:text-secondary')
-                            | #{__('navigation.lecture')}
                         a.block.mt-4.text-base.mr-4(href=route.blogs, class=(router.path == route.blogs ? 'text-secondary' : 'text-white'), class='lg:inline-block lg:mt-0 hover:text-secondary')
                             | #{__('navigation.blog')}
                         if isLoggedIn

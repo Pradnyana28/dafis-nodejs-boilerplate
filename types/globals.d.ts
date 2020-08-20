@@ -1,6 +1,7 @@
-export {};
+export { };
 
 import { IConstant } from '@utils/constant';
+import { IResponser } from '@utils/responser';
 
 declare global {
     namespace NodeJS {
@@ -16,12 +17,7 @@ declare global {
         }
 
         interface Response {
-            _render(view: string, data: any);
-            _render(view: string, data: any, status: number);
-
-            _ajax();
-            _ajax(data: any, redirect: string);
-            _ajax(data: any, redirect: string, status: boolean);
+            _render: IResponser;
         }
     }
 }
