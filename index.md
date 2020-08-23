@@ -1,37 +1,91 @@
-## Welcome to GitHub Pages
+# Dafis Boilerplate for Node.js
 
-You can use the [editor on GitHub](https://github.com/Pradnyana28/dafis-nodejs-boilerplate/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+Dafis Node.js Boilerplate is a personal project by Kadek Pradnyana. It save my time from making the project structures and setup this and that. Inspired by the simplicity of Laravel, and try to make it more simple in Node.js environment. Please feel free to hit me on [twitter][@kadekpradnyana] if you have any thought about this project.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+![](https://img.shields.io/github/stars/Pradnyana28/dafis-nodejs-boilerplate.svg) ![](https://img.shields.io/github/forks/Pradnyana28/dafis-nodejs-boilerplate.svg) ![](https://img.shields.io/github/tag/Pradnyana28/dafis-nodejs-boilerplate.svg) ![](https://img.shields.io/github/release/Pradnyana28/dafis-nodejs-boilerplate.svg) ![](https://img.shields.io/github/issues/Pradnyana28/dafis-nodejs-boilerplate.svg)
 
-### Markdown
+### Features
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+- Authentication
+- Email Notification
+- Responsive Template
 
-```markdown
-Syntax highlighted code block
+### Tech
 
-# Header 1
-## Header 2
-### Header 3
+This boilerplate uses a number of open source projects:
 
-- Bulleted
-- List
+- [node.js] - JavaScript runtime built on Chrome's V8 JavaScript engine.
+- [Express] - Fast node.js network app framework
+- [TypeScript] - JavaScript with static type definitions
+- [MongoDB] - Document-based database
+- [axios] - Promised based HTTP client
+- [faker] - Fake contextual data generator
+- [nodemailer] - Email sending for Node.js
+- [passport.js] - Simple authentication for Node.js
+- [pug] - Template engine
+- [tailwindcss] - A utility-first CSS framework
+- [redis] - In-memory data structure store
+- [laravel-mix] - Webpack wrapper
 
-1. Numbered
-2. List
+### Installation
 
-**Bold** and _Italic_ and `Code` text
+Install the dependencies and devDependencies and start the server.
 
-[Link](url) and ![Image](src)
+```sh
+$ npm install
+$ npm run mix
+$ nodemon
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+For production environments...
 
-### Jekyll Themes
+```sh
+$ npm install
+$ npm run production
+$ pm2 start /dist/app.js
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Pradnyana28/dafis-nodejs-boilerplate/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### Development
 
-### Support or Contact
+Dafis boilerplate use Webpack and Laravel Mix for fast developing.
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Want to contribute? Great! Just Star, and leave a Pull Request.
+
+### Docker
+
+Dafis boilerplate is already has Docker compose file setted up so you can run it easily on any server. Use command below to run.
+
+```sh
+docker-compose up --build
+```
+
+### Todos
+
+- Make more documentation
+- Add API route
+- Setup redis as middleware
+- Add nginx service to docker
+- Add redis service to docker
+
+## License
+
+[MIT]
+The MIT License is a permissive free software license originating at the Massachusetts Institute of Technology in the late 1980s. As a permissive license, it puts only very limited restriction on reuse and has, therefore, high license compatibility. It is compatible because it can be re-licensed under other licenses
+
+[//]: # "These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax"
+[prad]: https://github.com/Pradnyana28
+[git-repo-url]: https://github.com/Pradnyana28/dafis-nodejs-boilerplate.git
+[@kadekpradnyana]: https://twitter.com/kadekpradnyana
+[mit]: https://en.wikipedia.org/wiki/MIT_License
+[node.js]: http://nodejs.org
+[express]: http://expressjs.com
+[typescript]: https://www.typescriptlang.org/
+[mongodb]: https://www.mongodb.com/
+[axios]: https://github.com/axios/axios
+[faker]: https://www.npmjs.com/package/faker
+[nodemailer]: https://nodemailer.com/about/
+[passport.js]: http://www.passportjs.org/
+[pug]: https://pugjs.org/api/getting-started.html
+[tailwindcss]: https://tailwindcss.com/
+[redis]: https://redis.io/
+[laravel-mix]: https://laravel-mix.com/
