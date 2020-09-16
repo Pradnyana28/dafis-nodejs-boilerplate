@@ -8,7 +8,7 @@ export default async (app: Application): Promise<Application> => {
         dotenv.config();
     }
     // global variable
-    const DB_URI = `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}?authSource=${process.env.DB_NAME}&readPreference=primary&appname=${process.env.APP_NAME}&ssl=false`;
+    const DB_URI = process.env.MONGODB_URI;
     // setup variable
     app.set('dburi', DB_URI);
     app.set('dbName', process.env.DB_NAME);
@@ -24,13 +24,22 @@ export default async (app: Application): Promise<Application> => {
         mongoose.set('useUnifiedTopology', true);
         await mongoose.connect(app.get('dburi'));
         if (app.get('env') != 'testing') {
-            console.log('%s %s Connected to DB: %s', chalk.green('✓'), chalk.blueBright('INIT'), process.env.DB_NAME);
+            console.log(
+                '%s %s Connected to DB: %s',
+                chalk.green('✓'),
+                chalk.blueBright('INIT'),
+                app.get('dburi')
+            );
         }
     } catch (err) {
         console.error(err);
-        console.log('%s %s MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'), chalk.redBright('ERROR'));
+        console.log(
+            '%s %s MongoDB connection error. Please make sure MongoDB is running.',
+            chalk.red('✗'),
+            chalk.redBright('ERROR')
+        );
         process.exit();
     }
 
     return app;
-}
+};

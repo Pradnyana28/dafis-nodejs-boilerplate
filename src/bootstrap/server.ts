@@ -44,7 +44,7 @@ class App {
         /**
          * routing
          * -------------------------------------------
-         * Setup routing for our applications 
+         * Setup routing for our applications
          */
         server = await this.routing(server);
 
