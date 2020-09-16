@@ -27,10 +27,13 @@ describe('signin feature', () => {
                 expect(res.body.success).to.be.false;
                 expect(res.body.messages).to.be.an('array');
                 expect(res.body.messages).to.eql([
-                    { username: "Kolom Username &#x2F; Email Address harus diisi" },
-                    { password: "Kolom Password harus diisi" }
+                    {
+                        username:
+                            'Field Username &#x2F; Email Address is required',
+                    },
+                    { password: 'Field Password is required' },
                 ]);
                 done();
-            })
+            });
     });
 });
