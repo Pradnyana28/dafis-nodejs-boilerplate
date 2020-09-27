@@ -2,9 +2,9 @@ name: DafisCI
 
 on:
   push:
-    branches: [ develop, master ]
+    branches: [develop, master]
   pull_request:
-    branches: [ develop, master ]
+    branches: [develop, master]
 
 jobs:
   build:
@@ -16,12 +16,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: Start MongoDB v${{ matrix.mongodb-version }}
         uses: supercharge/mongodb-github-action@1.2.0
         with:
           mongodb-version: ${{ matrix.mongodb-version }}
-      
+
       - name: Start Node.js v${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -29,3 +29,8 @@ jobs:
 
       - run: npm install
       - run: npm test
+        env:
+          LOG_LEVEL: "info"
+          APP_SECRET: "$)(*23)$@3hjaI"
+          APP_KEY: "asf@$#fsfefes21SADCSD"
+          MONGODB_URI: "mongodb://localhost/dafis-boilerplate"

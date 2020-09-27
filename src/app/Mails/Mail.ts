@@ -4,11 +4,11 @@ import Email from 'email-templates';
 
 import path from 'path';
 import constant, { IConstant } from '@utils/constant';
-import { i18nConfig } from '@bootstrap/middleware';
+import { i18nConfig } from '@utils/i18n';
 
 export interface Attachment {
     filename: string;
-    content: string | Buffer
+    content: string | Buffer;
 }
 
 class Mail {
@@ -22,13 +22,16 @@ class Mail {
 
     /**
      * Mail
-     * 
+     *
      * @param customTransport use the transport on your own
      */
     constructor(customTransport?: any) {
         this.logger = new Logger();
         this.constant = constant(process.env);
-        this.localizationConfig = { ...i18nConfig, defaultLocale: this.language };
+        this.localizationConfig = {
+            ...i18nConfig,
+            defaultLocale: this.language,
+        };
         this.init(customTransport);
     }
 
@@ -47,7 +50,7 @@ class Mail {
             auth: {
                 user: this.constant.mail.username,
                 pass: this.constant.mail.password,
-            }
+            },
         };
         this.transporter = nodemail.createTransport(transportConfig);
     }
@@ -62,19 +65,30 @@ class Mail {
      * @param locals data to send to email template view
      * @param customTransport use custom transport to send the mail
      */
-    protected async sendMail(to: string | string[], subject: string, locals: any, customTransport?: any): Promise<any> {
+    protected async sendMail(
+        to: string | string[],
+        subject: string,
+        locals: any,
+        customTransport?: any
+    ): Promise<any> {
         try {
             const email: Email = new Email({
                 message: {},
-                i18n: this.localizationConfig
+                i18n: this.localizationConfig,
             });
-            const templatePath = path.join(__dirname, '../../resources/views/emails/' + this.view());
-            const template: string = await email.render(templatePath, { data: locals, app: this.constant.app });
+            const templatePath = path.join(
+                __dirname,
+                '../../resources/views/emails/' + this.view()
+            );
+            const template: string = await email.render(templatePath, {
+                data: locals,
+                app: this.constant.app,
+            });
             const emailOptions: SendMailOptions = {
                 from: this.constant.mail.from,
                 to: typeof to == 'string' ? to : to.join(', '),
                 subject: subject,
-                html: template
+                html: template,
             };
 
             if (this.attachments().length) {
