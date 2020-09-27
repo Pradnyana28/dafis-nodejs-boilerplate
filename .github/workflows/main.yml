@@ -30,4 +30,7 @@ jobs:
       - run: npm install
       - run: npm test
         env:
+          LOG_LEVEL: "info"
+          APP_SECRET: "$)(*23)$@3hjaI"
+          APP_KEY: "asf@$#fsfefes21SADCSD"
           MONGODB_URI: "mongodb://localhost/dafis-boilerplate"
