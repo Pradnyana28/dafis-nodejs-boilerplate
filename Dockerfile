@@ -1,24 +1,27 @@
 FROM node:alpine AS builder
 
 # Set working directory
-WORKDIR '/app'
+WORKDIR '/dafis'
 # Install require module
-RUN apk --no-cache update && apk --no-cache add g++ make bash zlib-dev libpng-dev libtool automake autoconf nasm && rm -fr /var/cache/apk/*
+RUN apk update && apk add g++ make bash zlib-dev libpng-dev libtool automake autoconf nasm && rm -fr /var/cache/apk/*
 # Copy NPM Package
 COPY 'package.json' .
-# Install PM2
-RUN npm install pm2 -g
-# Install dependencies
-RUN npm install --only=prod
-# Run test
-RUN npm run test
-# Run production comment
+RUN npm install
+COPY . .
+
 RUN npm run production
-# Copy project files
-COPY public .
-COPY dist .
+
+FROM node:alpine
+
+WORKDIR '/dafis-app'
+COPY --from=builder /dafis/package.json /dafis-app/package.json
+COPY --from=builder /dafis/dist /dafis-app/dist
+COPY --from=builder /dafis/public /dafis-app/public
+COPY --from=builder /dafis/node_modules /dafis-app/node_modules
+
 # Run command
-CMD ["npm", "run", "up"]
+CMD ["node", "dist/app.js"]
+
 
 FROM nginx
-COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=builder /dafis-app/dist /usr/share/nginx/html

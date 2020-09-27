@@ -1,17 +1,14 @@
-FROM node:alpine
+FROM node:alpine AS builder
 
 # Set working directory
-WORKDIR '/app'
+WORKDIR '/dafis'
 # Install require module
 RUN apk update && apk add g++ make bash zlib-dev libpng-dev libtool automake autoconf nasm && rm -fr /var/cache/apk/*
 # Copy NPM Package
 COPY 'package.json' .
 RUN npm install
 RUN npm install nodemon -g
-# Copy project files
-COPY dist .
-COPY public .
-COPY types .
-COPY src .
+COPY . .
+
 # Run command
-CMD ["nodemon"]
+CMD ["nodemon", "-L"]

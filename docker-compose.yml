@@ -5,15 +5,20 @@ services:
     container_name: garasi-mongo
     image: mongo
     restart: always
+    env_file:
+      - ./.env
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=password
-      - MONGO_INITDB_DATABASE=dafis-boilerplate
+      - MONGO_INITDB_ROOT_USERNAME=${MONGODB_INIT_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_INIT_ROOT_PASSWORD}
+      - MONGO_INITDB_DATABASE=${MONGO_INITDB_DATABASE}
+      - MONGO_INITDB_USERNAME=${MONGO_INITDB_USERNAME}
+      - MONGO_INITDB_PASSWORD=${MONGO_INITDB_PASSWORD}
     ports:
       - 27017:27017
     volumes:
-      - ./init-mongodb.js:/docker-entrypoint-initdb.d/init-mongodb.js:ro
-      - mongodb:/data/db
+      - ./shells/init-mongodb.sh:/docker-entrypoint-initdb.d/init-mongodb.sh:ro
+      - dafis-mongodb:/data/db
+
   web:
     container_name: garasi-server
     restart: always
@@ -31,11 +36,6 @@ services:
       - mongo
     environment:
       - NODE_ENV=development
-      - DB_HOST=mongo
-      - DB_USERNAME=admin
-      - DB_PASSWORD=root
-      - DB_NAME=dafis-boilerplate
-      - DB_PORT=27017
 
 volumes:
-  mongodb:
+  dafis-mongodb:
