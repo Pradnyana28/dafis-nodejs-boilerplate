@@ -12,7 +12,7 @@ Dafis Node.js Boilerplate is a personal project by Kadek Pradnyana. It save my t
 
 ### Tech 💻
 
-This boilerplate uses a number of open source projects:
+This boilerplate uses a number of open source projects: 📂
 
 - [node.js] - JavaScript runtime built on Chrome's V8 JavaScript engine.
 - [Express] - Fast node.js network app framework
