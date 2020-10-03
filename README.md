@@ -1,18 +1,18 @@
-# Dafis Boilerplate for Node.js
+# Dafis Boilerplate for Node.js 🤠
 
 Dafis Node.js Boilerplate is a personal project by Kadek Pradnyana. It save my time from making the project structures and setup this and that. Inspired by the simplicity of Laravel, and try to make it more simple in Node.js environment. Please feel free to hit me on [twitter][@kadekpradnyana] if you have any thought about this project.
 
 ![](https://img.shields.io/github/stars/Pradnyana28/dafis-nodejs-boilerplate.svg) ![](https://img.shields.io/github/forks/Pradnyana28/dafis-nodejs-boilerplate.svg) ![](https://img.shields.io/github/tag/Pradnyana28/dafis-nodejs-boilerplate.svg) ![](https://img.shields.io/github/release/Pradnyana28/dafis-nodejs-boilerplate.svg) ![](https://img.shields.io/github/issues/Pradnyana28/dafis-nodejs-boilerplate.svg)
 
-### Features
+### Features 🤗
 
-- Authentication
-- Email Notification
-- Responsive Template
+- Authentication 📧 
+- Email Notification 📩
+- Responsive Template 📱
 
-### Tech
+### Tech 💻
 
-This boilerplate uses a number of open source projects:
+This boilerplate uses a number of open source projects: 📂
 
 - [node.js] - JavaScript runtime built on Chrome's V8 JavaScript engine.
 - [Express] - Fast node.js network app framework
@@ -27,7 +27,7 @@ This boilerplate uses a number of open source projects:
 - [redis] - In-memory data structure store
 - [laravel-mix] - Webpack wrapper
 
-### Installation
+### Installation 👨‍🔧
 
 Install the dependencies and devDependencies and start the server.
 
@@ -45,13 +45,13 @@ $ npm run production
 $ pm2 start /dist/app.js
 ```
 
-### Development
+### Development 👨‍💻
 
 Dafis boilerplate use Webpack and Laravel Mix for fast developing.
 
 Want to contribute? Great! Just Star, and leave a Pull Request.
 
-### Docker
+### Docker 🐳
 
 Dafis boilerplate is already has Docker compose file setted up so you can run it easily on any server. Use command below to run.
 
@@ -59,7 +59,7 @@ Dafis boilerplate is already has Docker compose file setted up so you can run it
 docker-compose up --build
 ```
 
-### Todos
+### Todos 📝
 
 - Make more documentation
 - Add API route
@@ -67,7 +67,7 @@ docker-compose up --build
 - Add nginx service to docker
 - Add redis service to docker
 
-## License
+## License 😄
 
 [MIT]
 The MIT License is a permissive free software license originating at the Massachusetts Institute of Technology in the late 1980s. As a permissive license, it puts only very limited restriction on reuse and has, therefore, high license compatibility. It is compatible because it can be re-licensed under other licenses
